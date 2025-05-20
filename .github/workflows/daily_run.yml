@@ -25,7 +25,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Create Google Credentials File from Secret
-        run: echo "${{ secrets.GOOGLE_CREDENTIALS_CONTENT }}" > google_credentials.json
+        env:
+          GOOGLE_CREDS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_CONTENT }}
+        run: printf "%s" "$GOOGLE_CREDS_JSON" > google_credentials.json
       
       - name: Display Credentials File Start (DEBUG)
         run: |

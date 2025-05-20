@@ -8,7 +8,7 @@ from gspread_dataframe import set_with_dataframe
 import numpy as np
 
 # --- Configuration ---
-USE_SAMPLE_TICKERS = False  # SET TO FALSE FOR FULL NIFTY 500 RUN
+USE_SAMPLE_TICKERS = True  # SET TO FALSE FOR FULL NIFTY 500 RUN
 # Added a non-existent ticker to sample to test robustness
 SAMPLE_TICKERS = ['RELIANCE', 'TCS', 'INFY', 'HDFCBANK', 'DMART', 'NONEXISTENTTICKER']
 
