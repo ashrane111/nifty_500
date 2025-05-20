@@ -1,0 +1,7 @@
+pandas
+yfinance
+pandas-ta
+gspread
+gspread-dataframe
+numpy==1.26.4
+openpyxl
