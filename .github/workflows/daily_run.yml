@@ -1,0 +1,31 @@
+name: Run Daily Stock Analysis
+
+on:
+  schedule:
+    # Runs at 2:30 AM UTC, which is 8:00 AM IST
+    # Minute Hour Day(month) Month Day(week)
+    - cron: '30 2 * * *'
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create Google Credentials File from Secret
+        run: echo "${{ secrets.GOOGLE_CREDENTIALS_CONTENT }}" > google_credentials.json
+
+      - name: Run Python script
+        run: python nifty_report_generator.py
