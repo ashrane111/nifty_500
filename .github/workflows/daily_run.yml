@@ -26,6 +26,12 @@ jobs:
 
       - name: Create Google Credentials File from Secret
         run: echo "${{ secrets.GOOGLE_CREDENTIALS_CONTENT }}" > google_credentials.json
+      
+      - name: Display Credentials File Start (DEBUG)
+        run: |
+            echo "--- First 5 lines of google_credentials.json (DEBUG) ---"
+            head -n 5 google_credentials.json
+            echo "--- End of DEBUG ---"
 
       - name: Run Python script
         run: python nifty_report_generator.py
