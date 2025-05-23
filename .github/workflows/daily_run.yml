@@ -4,7 +4,7 @@ on:
   schedule:
     # Runs at 2:30 AM UTC, which is 8:00 AM IST
     # Minute Hour Day(month) Month Day(week)
-    - cron: '30 3 * * *'
+    - cron: '40 3 * * *'
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
@@ -34,6 +34,9 @@ jobs:
             echo "--- First 5 lines of google_credentials.json (DEBUG) ---"
             head -n 5 google_credentials.json
             echo "--- End of DEBUG ---"
+            
+      - name: Show current UTC time
+        run: date -u
 
       - name: Run Python script
         run: python nifty_report_generator.py
